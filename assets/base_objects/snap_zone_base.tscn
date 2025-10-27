@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://3f3jfcfgi5te"]
+
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_4nq13"]
+[ext_resource type="AudioStream" uid="uid://yr01nh0sw81d" path="res://elements/sounds/positive.wav" id="2_ove6t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ove6t"]
+resource_local_to_scene = true
+radius = 0.3
+
+[node name="SnapZone" instance=ExtResource("1_4nq13")]
+stash_sound = ExtResource("2_ove6t")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_ove6t")

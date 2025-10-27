@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cypd5j7sk3dlu"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_s2axx"]
+[ext_resource type="Script" uid="uid://55h1r23enp7" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="2_boots"]
+
+[node name="PickableObject" instance=ExtResource("1_s2axx")]
+collision_mask = 196614
+freeze = true
+picked_up_layer = 4
+
+[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="1"]
+script = ExtResource("2_boots")
+metadata/_custom_type_script = "uid://55h1r23enp7"

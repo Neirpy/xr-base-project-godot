@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3t8xplycgbg0"]
+
+[ext_resource type="PackedScene" uid="uid://ddg2bjlmsdvwi" path="res://assets/base_objects/flat_button.tscn" id="1_wy8sj"]
+
+[node name="FlatButton" instance=ExtResource("1_wy8sj")]
+
+[node name="Button" parent="Control" index="0"]
+offset_left = 114.0
+offset_top = 51.0
+offset_right = 276.0
+offset_bottom = 141.0

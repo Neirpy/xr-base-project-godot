@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7vi5m84ilkh6"]
+
+[ext_resource type="PackedScene" uid="uid://3f3jfcfgi5te" path="res://assets/base_objects/snap_zone_base.tscn" id="1_6iu5l"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fxcjh"]
+resource_local_to_scene = true
+radius = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_b1tlt"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0aek"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="SnapZone" instance=ExtResource("1_6iu5l")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_fxcjh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("SphereMesh_b1tlt")
+surface_material_override/0 = SubResource("StandardMaterial3D_v0aek")

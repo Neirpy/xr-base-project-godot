@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr4f0i15pmss2"]
+
+[ext_resource type="PackedScene" uid="uid://3f3jfcfgi5te" path="res://assets/base_objects/snap_zone_base.tscn" id="1_22lhx"]
+[ext_resource type="AudioStream" uid="uid://yr01nh0sw81d" path="res://elements/sounds/positive.wav" id="2_187l6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_187l6"]
+resource_local_to_scene = true
+radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_187l6"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ry7bw"]
+material = SubResource("StandardMaterial3D_187l6")
+size = Vector3(0.09, 0.09, 0.09)
+
+[node name="SnapZone" instance=ExtResource("1_22lhx")]
+stash_sound = ExtResource("2_187l6")
+snap_mode = 1
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_187l6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("BoxMesh_ry7bw")

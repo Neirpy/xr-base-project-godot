@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8x01q14s82om"]
+
+[ext_resource type="PackedScene" uid="uid://cypd5j7sk3dlu" path="res://assets/base_objects/pickable_base.tscn" id="1_b2210"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2210"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_siqn6"]
+albedo_color = Color(1, 0, 0.16862746, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yc6fu"]
+material = SubResource("StandardMaterial3D_siqn6")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdrel"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+grow_amount = 0.001
+
+[sub_resource type="BoxMesh" id="BoxMesh_s7ywc"]
+material = SubResource("StandardMaterial3D_bdrel")
+size = Vector3(0.11, 0.11, 0.11)
+
+[node name="GrabCube1" instance=ExtResource("1_b2210")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_b2210")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_yc6fu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="0"]
+mesh = SubResource("BoxMesh_s7ywc")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddg2bjlmsdvwi"]
+
+[ext_resource type="Script" uid="uid://c8clrft6nuj5" path="res://assets/base_objects/flat_button.gd" id="1_8wvn6"]
+
+[node name="FlatButton" type="CanvasLayer"]
+script = ExtResource("1_8wvn6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 382.0
+offset_bottom = 228.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 59.0
+offset_right = 303.0
+offset_bottom = 149.0
+text = "Click on me !"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
