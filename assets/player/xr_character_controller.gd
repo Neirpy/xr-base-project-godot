@@ -20,7 +20,30 @@ extends XROrigin3D
 ## Our head height
 @export_range(0.5, 2.0, 0.01) var head_height = 1.6
 
-var shape_query : PhysicsShapeQueryParameters3D
+## Auto calibrate height
+@export var auto_calibrate_height : bool = true
+
+var _shape_query : PhysicsShapeQueryParameters3D
+var _calibrated_height : bool = false
+var _height_adjustment : float = 0.0
+
+## Calibrate our users height
+func calibrate_height() -> void:
+	var head_tracker : XRPositionalTracker = XRServer.get_tracker("head")
+	if not head_tracker:
+		return
+
+	var head_pose : XRPose = head_tracker.get_pose("default")
+	if not head_pose:
+		return
+
+	var head_transform = head_pose.get_adjusted_transform()
+	var tracked_head_height = head_transform.origin.y
+	_height_adjustment = head_height - tracked_head_height
+
+	transform.origin.y = _height_adjustment
+	_calibrated_height = true
+
 
 func _ready():
 	# Do not run when in editor!
@@ -31,14 +54,32 @@ func _ready():
 	var character_body : CharacterBody3D = get_parent()
 	if not character_body:
 		return
-	
+
 	var shape : SphereShape3D = SphereShape3D.new()
 	shape.radius = head_radius
 
-	shape_query = PhysicsShapeQueryParameters3D.new()
-	shape_query.collision_mask = character_body.collision_mask
-	shape_query.exclude = [ character_body.get_rid() ]
-	shape_query.shape = shape
+	_shape_query = PhysicsShapeQueryParameters3D.new()
+	_shape_query.collision_mask = character_body.collision_mask
+	_shape_query.exclude = [ character_body.get_rid() ]
+	_shape_query.shape = shape
+
+	if auto_calibrate_height:
+		calibrate_height()
+
+	var xr_interface : OpenXRInterface = XRServer.find_interface("OpenXR")
+	if xr_interface:
+		xr_interface.session_visible.connect(_on_session_visible)
+		xr_interface.pose_recentered.connect(_on_pose_recenter)
+
+
+func _on_session_visible():
+	if auto_calibrate_height and not _calibrated_height:
+		calibrate_height()
+
+
+func _on_pose_recenter():
+	if auto_calibrate_height:
+		calibrate_height()
 
 
 # Provide our configuration warnings
@@ -55,6 +96,7 @@ func _get_configuration_warnings():
 
 	return warnings
 
+
 # Physics process run every physics tick
 func _physics_process(_delta):
 	# Do not run when in editor!
@@ -70,7 +112,7 @@ func _physics_process(_delta):
 	var camera : XRCamera3D = get_node_or_null("XRCamera3D")
 	if not camera:
 		return
-		
+
 	################################
 	# Handle movement
 
@@ -95,7 +137,6 @@ func _physics_process(_delta):
 
 	# Move our origin in the opposite direction
 	position -= delta_movement
-	
 
 	################################
 	# Handle rotation
@@ -122,10 +163,10 @@ func _physics_process(_delta):
 
 	var t : Transform3D = Transform3D()
 	t.origin = character_body.global_transform * Vector3(0.0, head_height, 0.0)
-	shape_query.transform = t
-	shape_query.motion = camera.global_position - t.origin
+	_shape_query.transform = t
+	_shape_query.motion = camera.global_position - t.origin
 
-	var collision = state.cast_motion(shape_query)
+	var collision = state.cast_motion(_shape_query)
 	var is_colliding : bool = not collision.is_empty() and collision[0] < 1.0
 
 	# Calculate how far away we are from our target location

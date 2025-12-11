@@ -19,9 +19,11 @@
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_kwq1x")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="BodyCollisionShape" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_pqqvu")
+
+[node name="FloorRayCast" type="RayCast3D" parent="CharacterBody3D"]
 
 [node name="XROrigin3D" type="XROrigin3D" parent="CharacterBody3D" node_paths=PackedStringArray("fade_effect")]
 script = ExtResource("2_w0qfq")
