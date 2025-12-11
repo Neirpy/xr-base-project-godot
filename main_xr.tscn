@@ -63,7 +63,7 @@ font_size = 52
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.2, -1.8)
 snap_require = "GrabSphere"
 
-[node name="PickableObject" parent="Objects" groups=["GrabSphere"] instance=ExtResource("7_272bh")]
+[node name="GrabSphere" parent="Objects" groups=["GrabSphere"] instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.1, -1.1)
 
 [node name="InfoSnapSphere" type="Label3D" parent="Objects"]

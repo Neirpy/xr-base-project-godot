@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bt7abqwf4vbw7"]
+[gd_scene load_steps=13 format=3 uid="uid://bt7abqwf4vbw7"]
 
 [ext_resource type="Script" uid="uid://defbdwpybxpfi" path="res://assets/player/character_body_3d.gd" id="1_kwq1x"]
 [ext_resource type="Script" uid="uid://bevlbe4b41a2w" path="res://assets/player/xr_character_controller.gd" id="2_w0qfq"]
@@ -6,14 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bj1o0wtidtkmc" path="res://assets/info/vignette.tscn" id="4_tbeu5"]
 [ext_resource type="Script" uid="uid://eyssonglpvqx" path="res://assets/function_player/direct_movement_function.gd" id="6_w0qfq"]
 [ext_resource type="PackedScene" uid="uid://bjcxf427un2wp" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="7_otfn8"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="8_rgiip"]
 [ext_resource type="Script" uid="uid://cjlhlheo0y34k" path="res://assets/function_player/turn_function.gd" id="8_tbeu5"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="10_jevvt"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="15_od4j3"]
 [ext_resource type="PackedScene" uid="uid://dbkiigg2vm2x7" path="res://assets/info/axis.tscn" id="16_g0frs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pqqvu"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_gug23"]
-size = Vector3(0.1, 0.1, 0.1)
 
 [node name="CharacterWH" type="Node3D"]
 
@@ -38,7 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="LeftController" type="XRController3D" parent="CharacterBody3D/XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.005, 0)
 tracker = &"left_hand"
-pose = &"grip"
 
 [node name="DirectMovementFunction" type="Node3D" parent="CharacterBody3D/XROrigin3D/LeftController"]
 script = ExtResource("6_w0qfq")
@@ -50,17 +48,15 @@ grab_collision_mask = 1114116
 ranged_angle = 10.0
 ranged_collision_mask = 1114116
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/XROrigin3D/LeftController"]
-mesh = SubResource("BoxMesh_gug23")
-
 [node name="Poke" parent="CharacterBody3D/XROrigin3D/LeftController" instance=ExtResource("7_otfn8")]
 layer = 8388608
 mask = 4259832
 
+[node name="LeftHand" parent="CharacterBody3D/XROrigin3D/LeftController" instance=ExtResource("8_rgiip")]
+
 [node name="RightController" type="XRController3D" parent="CharacterBody3D/XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.005, 0)
 tracker = &"right_hand"
-pose = &"grip"
 
 [node name="TurnFunction" type="Node3D" parent="CharacterBody3D/XROrigin3D/RightController"]
 script = ExtResource("8_tbeu5")
@@ -72,12 +68,11 @@ grab_collision_mask = 1114116
 ranged_angle = 10.0
 ranged_collision_mask = 1114116
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/XROrigin3D/RightController"]
-mesh = SubResource("BoxMesh_gug23")
-
 [node name="Poke" parent="CharacterBody3D/XROrigin3D/RightController" instance=ExtResource("7_otfn8")]
 layer = 8388608
 mask = 4259832
+
+[node name="RightHand" parent="CharacterBody3D/XROrigin3D/RightController" instance=ExtResource("10_jevvt")]
 
 [node name="Axis" parent="CharacterBody3D/XROrigin3D" instance=ExtResource("16_g0frs")]
 label = "XROrigin3D"
