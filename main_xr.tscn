@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmrj2g7gxds0l"]
+[gd_scene format=3 uid="uid://bmrj2g7gxds0l"]
 
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bni0p2hou6sjl" path="res://main.gd" id="1_1bvp3"]
@@ -23,66 +23,66 @@ sky = SubResource("Sky_lquwl")
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(16.496155, 0.4942627, 12.63916)
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=759649989]
 script = ExtResource("1_1bvp3")
 
-[node name="StartXR" parent="." instance=ExtResource("1_0xm2m")]
+[node name="StartXR" parent="." unique_id=1970043206 instance=ExtResource("1_0xm2m")]
 enable_passthrough = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1962632124]
 environment = SubResource("Environment_7mycd")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1995792704]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, -2.3841858e-07, 3.2813768, 1.4422685)
 
-[node name="CharacterXR" parent="." instance=ExtResource("3_kek77")]
+[node name="CharacterXR" parent="." unique_id=780608316 instance=ExtResource("3_kek77")]
 
-[node name="Ground" type="StaticBody3D" parent="."]
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1288955140]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=716131108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027252197, -0.25286865, 0.8918457)
 shape = SubResource("BoxShape3D_h2yge")
 
-[node name="Objects" type="Node3D" parent="."]
+[node name="Objects" type="Node3D" parent="." unique_id=1147162864]
 
-[node name="SnapZone" parent="Objects" instance=ExtResource("4_lquwl")]
+[node name="SnapZone" parent="Objects" unique_id=361149561 instance=ExtResource("4_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.2, -1.8000001)
 snap_require = "GrabCube"
 
-[node name="GrabCube1" parent="Objects" groups=["GrabCube"] instance=ExtResource("3_h2yge")]
+[node name="GrabCube1" parent="Objects" unique_id=2029768103 groups=["GrabCube"] instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.1, -1.1)
 release_mode = 1
 
-[node name="InfoSnapCube" type="Label3D" parent="Objects"]
+[node name="InfoSnapCube" type="Label3D" parent="Objects" unique_id=1524396923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.4, -1.8)
 pixel_size = 0.001
 text = "SnapZone Cube"
 font_size = 52
 
-[node name="SnapZone2" parent="Objects" instance=ExtResource("6_7mycd")]
+[node name="SnapZone2" parent="Objects" unique_id=870675540 instance=ExtResource("6_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.2, -1.8)
 snap_require = "GrabSphere"
 
-[node name="GrabSphere" parent="Objects" groups=["GrabSphere"] instance=ExtResource("7_272bh")]
+[node name="GrabSphere" parent="Objects" unique_id=162628244 groups=["GrabSphere"] instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.1, -1.1)
 
-[node name="InfoSnapSphere" type="Label3D" parent="Objects"]
+[node name="InfoSnapSphere" type="Label3D" parent="Objects" unique_id=1437103776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.4, -1.8)
 pixel_size = 0.001
 text = "SnapZone Sphere"
 font_size = 52
 
-[node name="InteractiveButton" parent="Objects" instance=ExtResource("8_5vw27")]
+[node name="InteractiveButton" parent="Objects" unique_id=2126415853 instance=ExtResource("8_5vw27")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.2, 1.1, -1.1)
 can_interact = true
 
-[node name="InfoSnapSphere2" type="Label3D" parent="Objects"]
+[node name="InfoSnapSphere2" type="Label3D" parent="Objects" unique_id=681137834]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.4, -1.0999999)
 pixel_size = 0.001
 billboard = 2
 text = "Interactive Button"
 font_size = 52
 
-[node name="Viewport2Din3D" parent="Objects" instance=ExtResource("9_kek77")]
+[node name="Viewport2Din3D" parent="Objects" unique_id=1675786467 instance=ExtResource("9_kek77")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 1.5570683, 1.1999999, -1.1)
 screen_size = Vector2(150, 50)
