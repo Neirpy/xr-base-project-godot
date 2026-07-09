@@ -16,13 +16,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="XR_base_project"
 run/main_scene="uid://bmrj2g7gxds0l"
-config/features=PackedStringArray("4.6", "Mobile")
+config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-XRToolsUserSettings="*uid://c5plocjms8ygq"
-XRToolsRumbleManager="*uid://limfjsf2neeu"
+XRToolsUserSettings="*uid://bqgb8i74tm0t"
+XRToolsRumbleManager="*uid://by853dk86g1qw"
 
 [editor_plugins]
 
@@ -35,49 +35,6 @@ textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
 vrs/mode=2
 
-[shader_globals]
-
-META_ENVIRONMENT_DEPTH_AVAILABLE={
-"type": "bool",
-"value": false
-}
-META_ENVIRONMENT_DEPTH_TEXTURE={
-"type": "sampler2DArray",
-"value": ""
-}
-META_ENVIRONMENT_DEPTH_PROJECTION_VIEW_LEFT={
-"type": "mat4",
-"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-}
-META_ENVIRONMENT_DEPTH_PROJECTION_VIEW_RIGHT={
-"type": "mat4",
-"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-}
-META_ENVIRONMENT_DEPTH_INV_PROJECTION_VIEW_LEFT={
-"type": "mat4",
-"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-}
-META_ENVIRONMENT_DEPTH_INV_PROJECTION_VIEW_RIGHT={
-"type": "mat4",
-"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-}
-META_ENVIRONMENT_DEPTH_FROM_CAMERA_PROJECTION_LEFT={
-"type": "mat4",
-"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-}
-META_ENVIRONMENT_DEPTH_FROM_CAMERA_PROJECTION_RIGHT={
-"type": "mat4",
-"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-}
-META_ENVIRONMENT_DEPTH_TO_CAMERA_PROJECTION_LEFT={
-"type": "mat4",
-"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-}
-META_ENVIRONMENT_DEPTH_TO_CAMERA_PROJECTION_RIGHT={
-"type": "mat4",
-"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-}
-
 [xr]
 
 openxr/enabled=true
@@ -89,4 +46,3 @@ shaders/enabled=true
 openxr/extensions/meta/passthrough=true
 openxr/extensions/meta/hand_tracking_aim=true
 openxr/extensions/meta/hand_tracking_mesh=true
-openxr/extensions/meta/color_space/starting_color_space=3

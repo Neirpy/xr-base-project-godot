@@ -19,6 +19,8 @@ sky_material = SubResource("ProceduralSkyMaterial_1bvp3")
 background_mode = 2
 background_color = Color(0, 0, 0, 0)
 sky = SubResource("Sky_lquwl")
+ambient_light_source = 2
+ambient_light_color = Color(0.5330367, 0.5330367, 0.5330367, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(16.496155, 0.4942627, 12.63916)
@@ -86,3 +88,4 @@ font_size = 52
 [node name="Viewport2Din3D" parent="Objects" unique_id=1675786467 instance=ExtResource("9_kek77")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 1.5570683, 1.1999999, -1.1)
 screen_size = Vector2(150, 50)
+transparent = 1

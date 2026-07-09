@@ -13,6 +13,12 @@ extends Node3D
 @export var auto_rotation_limit : float = 20.0: set = set_auto_rotation_limit
 @export var auto_velocity_limit : float = 10.0
 
+@export_flags_3d_render var layers = 2:
+	set(value):
+		layers = value
+		if is_inside_tree():
+			$Mesh.layers = layers
+
 var material : ShaderMaterial = preload("res://addons/godot-xr-tools/effects/vignette.tres")
 
 var auto_first = true
@@ -80,6 +86,7 @@ func _update_mesh() -> void:
 	arr_mesh.custom_aabb = AABB(Vector3(-1.0, -1.0, -1.0), Vector3(1.0, 1.0, 1.0))
 
 	$Mesh.mesh = arr_mesh
+	$Mesh.layers = layers
 	$Mesh.set_surface_override_material(0, material)
 
 func set_auto_adjust(new_auto_adjust : bool) -> void:
@@ -99,8 +106,8 @@ func set_auto_rotation_limit(new_auto_rotation_limit : float) -> void:
 
 
 # Add support for is_xr_class on XRTools classes
-func is_xr_class(name : String) -> bool:
-	return name == "XRToolsVignette"
+func is_xr_class(xr_name:  String) -> bool:
+	return xr_name == "XRToolsVignette"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -145,7 +152,7 @@ func _process(delta):
 	# Adjust radius based on rotation speed of our origin point (not of head movement).
 	# We convert our delta rotation to a quaterion.
 	# A quaternion represents a rotation around an angle.
-	var q = delta_b.get_rotation_quaternion()
+	var q = delta_b.orthonormalized().get_rotation_quaternion()
 
 	# We get our angle from our w component and then adjust to get a
 	# rotation speed per second by dividing by delta
