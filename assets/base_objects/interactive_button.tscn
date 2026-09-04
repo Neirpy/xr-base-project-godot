@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://coedc6s3h5t8v"]
+[gd_scene format=4 uid="uid://coedc6s3h5t8v"]
 
 [ext_resource type="Script" uid="uid://b4dynf024aq8c" path="res://assets/base_objects/interactive_button.gd" id="1_ajr2a"]
 [ext_resource type="AudioStream" uid="uid://b4xjpmehw7lc6" path="res://elements/sounds/click_button.mp3" id="6_2fxcj"]
@@ -139,36 +139,34 @@ _data = {
 &"pressedUp": SubResource("Animation_c3mwc")
 }
 
-[node name="InteractiveButton" type="StaticBody3D"]
+[node name="InteractiveButton" type="StaticBody3D" unique_id=316030688]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_ajr2a")
 
-[node name="Base" type="MeshInstance3D" parent="."]
+[node name="Base" type="MeshInstance3D" parent="." unique_id=220840366]
 mesh = SubResource("ArrayMesh_tih3e")
 
-[node name="Button" type="MeshInstance3D" parent="."]
+[node name="Button" type="MeshInstance3D" parent="." unique_id=741387039]
 mesh = SubResource("ArrayMesh_10m7m")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=201694054]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000358563, 0.0151362, -0.000427305)
 shape = SubResource("BoxShape3D_5036w")
 
-[node name="InteractiveButtonArea" type="Area3D" parent="."]
+[node name="InteractiveButtonArea" type="Area3D" parent="." unique_id=1711226995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0523683, 0)
 collision_layer = 12582912
 collision_mask = 12582912
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractiveButtonArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractiveButtonArea" unique_id=1900920731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0193283, 0)
 shape = SubResource("CylinderShape3D_tywp8")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ru7pf")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1384993688]
+libraries/ = SubResource("AnimationLibrary_ru7pf")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=676176392]
 stream = ExtResource("6_2fxcj")
 
 [connection signal="body_entered" from="InteractiveButtonArea" to="." method="_on_interactive_area_body_entered"]

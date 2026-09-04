@@ -20,7 +20,7 @@ background_mode = 2
 background_color = Color(0, 0, 0, 0)
 sky = SubResource("Sky_lquwl")
 ambient_light_source = 2
-ambient_light_color = Color(0.5330367, 0.5330367, 0.5330367, 1)
+ambient_light_color = Color(0.6378435, 0.6378431, 0.63784313, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(16.496155, 0.4942627, 12.63916)
